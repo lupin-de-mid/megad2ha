@@ -2,14 +2,14 @@ namespace ConsoleApp1
 {
     public class InPort : Port
     {
-        public ushort count;
+        private ushort count;
 
         public InPort(ushort number) : base(number)
         {
         }
 
         public bool State { get; protected set; }
-        public override string PortType => "In";
+        protected override string PortType => "In";
 
         protected override bool UpdateImpl(string value)
         {

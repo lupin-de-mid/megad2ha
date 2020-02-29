@@ -6,7 +6,7 @@ namespace ConsoleApp1
         {
         }
 
-        public override string PortType => "Pwm";
+        protected override string PortType => "Pwm";
         public byte Level { get; private set; }
 
         protected override bool UpdateImpl(string value)

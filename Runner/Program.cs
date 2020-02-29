@@ -11,6 +11,15 @@ using MQTTnet.Extensions.ManagedClient;
 
 namespace ConsoleApp1
 {
+    public class MegaD2561 : MegaD
+    {
+        public MegaD2561(string address, string password) : base(address, password)
+        {
+        }
+
+    
+    }
+
     class Program
     {
         static readonly HttpClient Client = new HttpClient();
@@ -64,6 +73,21 @@ namespace ConsoleApp1
                     new Ds2413OutPort(30)
                     // new OutPort(29),
                 };
+
+                var megad = new MegaD2561("192.168.2.11", "sec");
+                foreach (var sensor in sensors)
+                    if (!megad.Add(sensor))
+                        Console.Out.WriteLine("Unable add " + sensor);
+
+                if (await megad.Update())
+                {
+                    Console.Out.WriteLine("Unable update");
+                }
+                
+                Console.Out.WriteLine(megad.DumpState());
+                
+                
+                
                 var options = new ManagedMqttClientOptionsBuilder()
                     .WithAutoReconnectDelay(TimeSpan.FromSeconds(1))
                     .WithClientOptions(new MqttClientOptionsBuilder()

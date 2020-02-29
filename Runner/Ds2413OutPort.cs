@@ -13,7 +13,7 @@ namespace ConsoleApp1
 
         public bool BValue => bValue;
 
-        public override string PortType => "DS2413";
+        protected override string PortType => "DS2413";
 
         protected override bool UpdateImpl(string value)
         {

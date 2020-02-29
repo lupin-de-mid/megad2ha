@@ -11,10 +11,10 @@ namespace ConsoleApp1
         public bool State
         {
             get => state;
-            protected  set => state = value;
+            protected set => state = value;
         }
 
-        public override string PortType => "Out";
+        protected override string PortType => "Out";
 
 
         protected override bool UpdateImpl(string value)

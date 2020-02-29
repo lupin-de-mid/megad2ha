@@ -4,18 +4,19 @@ namespace ConsoleApp1
 {
     public abstract class Port
     {
-        public Port(ushort number)
+        protected Port(ushort number)
         {
-            this.Number = number;
+            Number = number;
         }
 
         public ushort Number { get; }
 
-        public abstract string PortType { get; }
+        protected abstract string PortType { get; }
+        public MegaD MegaD { get; set; }
 
         public async Task<bool> UpdateValue()
         {
-            var url = $"http://192.168.2.11/sec/?pt={Number}&cmd=get";
+            var url = $"{MegaD.BaseUrl}?pt={Number}&cmd=get";
             var value = await Program.GetUrl(url);
             return UpdateImpl(value);
         }

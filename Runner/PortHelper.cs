@@ -1,5 +1,3 @@
-using System.Net.NetworkInformation;
-
 namespace ConsoleApp1
 {
     public static class PortHelper
@@ -15,7 +13,7 @@ namespace ConsoleApp1
 
             return v.Equals("OFF");
         }
-        
+
         public static string To10(this bool state)
         {
             return (state ? 1 : 0).ToString();
